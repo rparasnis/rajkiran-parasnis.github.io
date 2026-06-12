@@ -1,2 +1,2 @@
-# rparasnis.github.io
+# rajkiran-parasnis.github.io
 My professional portfolio
