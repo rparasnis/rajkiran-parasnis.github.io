@@ -2,299 +2,575 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajkiran A. Parasnis - Executive Portfolio</title>
+    <title>Rajkiran Parasnis - Executive Engineering Portfolio</title>
     <style>
-        /* PDF/Print Layout Rules */
         @page {
             size: A4;
-            margin: 15mm 15mm 15mm 15mm;
+            margin: 20mm 15mm 20mm 15mm;
             @bottom-right {
                 content: counter(page);
-                font-family: Arial, sans-serif;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8pt;
+                color: #718096;
+            }
+            @bottom-left {
+                content: "Rajkiran Parasnis — Technical Leadership Portfolio";
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-size: 8pt;
                 color: #718096;
             }
         }
-
-        /* Screen/Webpage Realignment Rules */
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 10.5pt;
             line-height: 1.6;
             color: #2d3748;
-            background-color: #f7fafc; /* Subtle premium background color for screens */
             margin: 0;
-            padding: 40px 20px; /* Adds breathing room at the top/bottom of the webpage */
+            padding: 0;
+            background-color: #ffffff;
         }
 
-        /* The Fix: Centered structural page container to stop text stretching infinitely */
-        .portfolio-page {
-            max-width: 850px; /* Holds the content to a readable, elegant width */
-            margin: 0 auto; /* Perfectly centers the container on any screen size */
-            background-color: #ffffff; /* Gives it a crisp white "document" look */
-            padding: 50px; /* Internal spacing within the document canvas */
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            border-radius: 6px;
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #1a365d;
-            padding-bottom: 15px;
+        /* Cover Banner Section */
+        .header-banner {
+            background-color: #1a365d;
+            color: #ffffff;
+            margin: -20mm -15mm 25px -15mm;
+            padding: 35px 15mm;
+            border-bottom: 5px solid #d69e2e;
         }
-        .header h1 {
-            font-size: 22pt;
-            color: #1a365d;
-            margin: 0 0 6px 0;
+
+        .header-banner h1 {
+            font-size: 24pt;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             text-transform: uppercase;
+        }
+
+        .header-banner .subtitle {
+            font-size: 13pt;
+            color: #e2e8f0;
+            margin: 0 0 15px 0;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
-        .header .contact-info {
+
+        .header-banner .meta-info {
             font-size: 9.5pt;
-            color: #4a5568;
-            margin-bottom: 6px;
+            color: #cbd5e0;
             line-height: 1.4;
         }
-        .header .title-tag {
-            font-size: 12pt;
-            font-weight: bold;
-            color: #2b6cb0;
-            text-transform: uppercase;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-        }
+
+        /* Section Styling */
         h2 {
-            font-size: 13pt;
+            font-size: 14pt;
             color: #1a365d;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 4px;
-            margin-top: 24px;
-            margin-bottom: 12px;
+            border-left: 4px solid #d69e2e;
+            padding-left: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             page-break-after: avoid;
-        }
-        h3 {
-            font-size: 11pt;
-            color: #2c5282;
-            margin: 14px 0 6px 0;
-            page-break-after: avoid;
-        }
-        p {
-            margin: 0 0 10px 0;
-            text-align: justify;
-        }
-        ul {
-            margin: 0 0 12px 0;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 5px;
-            text-align: justify;
-        }
-        .job-header {
-            display: table;
-            width: 100%;
-            font-weight: bold;
-            color: #2d3748;
-            margin-bottom: 6px;
-            page-break-after: avoid;
-        }
-        .job-title {
-            display: table-cell;
-            text-align: left;
-        }
-        .job-date {
-            display: table-cell;
-            text-align: right;
-            font-weight: normal;
-            color: #4a5568;
-        }
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 12px;
-        }
-        .skills-table td {
-            padding: 4px 6px;
-            vertical-align: top;
-            font-size: 9.5pt;
-        }
-        .skills-table td.label {
-            font-weight: bold;
-            color: #1a365d;
-            width: 22%;
         }
 
-        /* Strips out the webpage-specific layouts cleanly if someone prints the site to a physical page or PDF */
-        @media print {
-            body {
-                background-color: transparent;
-                padding: 0;
-            }
-            .portfolio-page {
-                max-width: 100%;
-                box-shadow: none;
-                padding: 0;
-                border-radius: 0;
-                background-color: transparent;
-            }
+        p {
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+
+        /* Core Competencies Grid Layout via Tables */
+        .summary-box {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        .competency-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .competency-table td {
+            width: 50%;
+            vertical-align: top;
+            padding: 4px 10px;
+            font-size: 10pt;
+        }
+
+        .competency-table ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        /* Case Study Container */
+        .case-study {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+            page-break-inside: auto;
+        }
+
+        .case-study:last-of-type {
+            border-bottom: none;
+        }
+
+        .case-title {
+            font-size: 11.5pt;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 10px;
+            page-break-after: avoid;
+        }
+
+        /* STAR Grid Structure using standard blocks and bullet formatting */
+        .star-section {
+            margin-bottom: 6px;
+        }
+
+        .star-label {
+            font-weight: bold;
+            color: #1a365d;
+            display: inline-block;
+            width: 85px;
+        }
+
+        .star-content {
+            display: block;
+            margin-left: 85px;
+            margin-top: -1.6em;
+        }
+
+        .action-list {
+            margin: 4px 0 0 85px;
+            padding-left: 15px;
+        }
+
+        .action-list li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        /* Recommendations / Testimonials Section */
+        .recommendation-card {
+            background-color: #f7fafc;
+            border-left: 3px solid #2b6cb0;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+
+        .rec-author {
+            font-weight: bold;
+            color: #2b6cb0;
+            font-size: 10.5pt;
+            margin-bottom: 2px;
+        }
+
+        .rec-title {
+            font-size: 9pt;
+            color: #4a5568;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .rec-text {
+            font-size: 9.5pt;
+            color: #2d3748;
+            font-style: normal;
+            line-height: 1.5;
+        }
+        
+        .rec-text strong {
+            color: #1a365d;
         }
     </style>
 </head>
 <body>
 
-    <div class="portfolio-page">
-
-        <div class="header">
-            <h1>Rajkiran A. Parasnis</h1>
-            <div class="contact-info">
-                Mumbai, India &nbsp;|&nbsp; +91-7738047344 &nbsp;|&nbsp; rparasnis@gmail.com<br>
-                LinkedIn: linkedin.com/in/rajkiran-parasnis &nbsp;|&nbsp; GitHub Portfolio: github.com/yourusername
-            </div>
-            <div class="title-tag">Engineering Manager - Platform Engineering | Cloud Platforms | Developer Infrastructure</div>
+    <!-- Cover Header Banner -->
+    <div class="header-banner">
+        <h1>Rajkiran Parasnis</h1>
+        <div class="subtitle">Senior Technology Leader & Platforms Engineering Executive</div>
+        <div class="meta-info">
+            <strong>Experience:</strong> 21+ Years of Enterprise IT Infrastructure Innovation<br>
+            <strong>Core Domain Focus:</strong> Hybrid Cloud Infrastructure, Enterprise API Management, Scale Engineering & Technical Governance<br>
+            <strong>Scale Benchmarks:</strong> Orchestrating 100M+ Monthly API Requests & 7,000+ Peak Transactions Per Second (TPS)
         </div>
+    </div>
 
-        <p>Senior Engineering Leader with 21+ years of experience building and scaling cloud platforms, developer infrastructure, and API ecosystems supporting hundreds of millions of users. Proven expertise in leading platform and DevOps teams, architecting highly available distributed systems, and driving infrastructure standardization across hybrid cloud environments (Azure & GCP). Strong track record of treating Infrastructure as a Product, building reusable platforms, improving developer productivity through automation, and improving system resiliency through SRE practices. Experienced in managing large-scale platform migrations, mentoring engineers, and aligning engineering execution with business priorities.</p>
-
-        <h2>Core Leadership Strengths</h2>
-        <table class="skills-table">
+    <!-- Executive Summary Box -->
+    <div class="summary-box">
+        <p><strong>Executive Profile:</strong> A battle-tested Engineering Operations Head and Technocrat with over two decades of experience designing, defending, and optimizing sovereign-scale infrastructure frameworks. Expert at aligning high-stakes corporate visions with bulletproof distributed software deployment blueprints. Proven record of leading cross-functional tech turnarounds, resolving deep architectural bottlenecks, managing global tech integrations (Meta, Netflix, Google, Amazon), and engineering zero-trust ecosystem environments that secure real-time monetization pipelines for over 450M+ active subscribers.</p>
+        
+        <table class="competency-table">
             <tr>
-                <td class="label">Platform Leadership:</td>
-                <td>Platform Strategy | Developer Platforms | Infrastructure as Product | Engineering Management | SRE Practices | Platform Standardization | Technical Roadmaps | Delivery Management</td>
-            </tr>
-            <tr>
-                <td class="label">Cloud & DevOps:</td>
-                <td>Azure | Google Cloud | Kubernetes | Docker | CI/CD | Infrastructure Automation | Distributed Systems | Observability | High Availability Design</td>
-            </tr>
-            <tr>
-                <td class="label">API & Platform Tech:</td>
-                <td>API Gateways (Apigee, Azure APIM, Layer7) | REST APIs | OAuth | JWT | API Security | Service Integrations | Platform Monitoring</td>
-            </tr>
-            <tr>
-                <td class="label">Management:</td>
-                <td>Team Leadership | Stakeholder Management | Agile Delivery | Incident Management | OKRs | Mentorship | Cross-Functional Collaboration</td>
+                <td>
+                    <ul>
+                        <li><strong>Scale & Architecture:</strong> Global Load Balancing (GSLB), L7 Traffic Optimization, Edge Gateways</li>
+                        <li><strong>API Lifecycle & Governance:</strong> Apigee Migration, Node.js/Express, API Rationalization</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><strong>Leadership & EQ:</strong> Multi-tier Stakeholder Diplomacy, High-Retention Mentorship</li>
+                        <li><strong>Operations Safeguards:</strong> Securing L3 SDLC Integrity, FinTech Webhook Idempotency</li>
+                    </ul>
+                </td>
             </tr>
         </table>
+    </div>
 
-        <h2>Professional Experience</h2>
+    <!-- SECTION 1 -->
+    <h2>Part A: Technical Architecture & Sovereign-Scale Engineering</h2>
 
-        <div class="job-header">
-            <span class="job-title">General Manager - Platform Engineering (API & Cloud Platforms) &mdash; Jio Platforms Ltd, Mumbai</span>
-            <span class="job-date">Sep 2014 &ndash; Present</span>
+    <!-- CASE 1 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 1: High-Stakes Crisis Management & Rapid Infrastructure Scaling (4G Commercial Launch)</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">During the historic, high-volume nationwide launch of Jio's commercial 4G LTE services, an unpredicted surge of millions of concurrent consumers instantly hit the core retail customer onboarding system (RPOS). To preserve competitive secrecy, architectural designs were scaled to conservative baselines, causing a cascading failure state across upstream load balancers and backend servers, completely choking customer onboarding channels.</span>
         </div>
-        <p>Lead platform engineering and DevOps initiatives supporting telecom-scale infrastructure serving 450M+ users across distributed environments.</p>
-
-        <h3>Platform Engineering & Infrastructure Leadership</h3>
-        <ul>
-            <li>Lead engineering team responsible for centralized API and cloud platforms across 7 production and 5 disaster recovery environments.</li>
-            <li>Built standardized platform capabilities enabling engineering teams to deploy and manage services reliably across hybrid cloud infrastructure.</li>
-            <li>Scaled hybrid infrastructure footprint from 2 nodes to 250+ servers supporting high-volume distributed workloads.</li>
-            <li>Led Kubernetes adoption initiatives improving deployment consistency and platform scalability.</li>
-            <li>Orchestrated a rapid infrastructure stabilization sprint during the nationwide commercial 4G launch; diagnosed database connection starvation under active load and directed the emergency provisioning of 6 new dedicated gateway clusters over a single weekend to restore core retail onboarding pipelines.</li>
-        </ul>
-
-        <h3>Resiliency & Reliability Engineering</h3>
-        <ul>
-            <li>Established disaster recovery strategies and platform resiliency improvements ensuring high availability for mission critical telecom services.</li>
-            <li>Reduced production incidents by 86% through monitoring improvements using Prometheus and ELK.</li>
-            <li>Led incident response improvements and root cause analysis processes improving operational maturity.</li>
-            <li>Implemented platform observability practices improving proactive detection of infrastructure risks.</li>
-        </ul>
-
-        <h3>Platform Modernization & Developer Productivity</h3>
-        <ul>
-            <li>Led migration of 800+ APIs from Broadcom Layer7 to Google Apigee improving governance and developer onboarding.</li>
-            <li>Directed Azure APIM migration into Jio private cloud improving infrastructure control and compliance.</li>
-            <li>Led CI/CD transformation using Azure DevOps reducing release cycles from 60 days to 14 days.</li>
-            <li>Introduced automation practices improving platform deployment consistency and reducing manual operations.</li>
-            <li>Participated in an enterprise Cursor AI developer pilot, coordinating the operational evaluation of IDE-native agentic workflows, multi-file editing, and codebase semantic indexing within the API engineering tier to assess impact on code consistency and junior engineer onboarding.</li>
-        </ul>
-
-        <h3>Architecture & Distributed Systems</h3>
-        <ul>
-            <li>Designed distributed API platform supporting large-scale B2B and consumer integrations.</li>
-            <li>Managed the bare-metal on-premise deployment of Google Apigee Edge across 250+ servers, purposefully bypassing public cloud SaaS alternatives (Apigee X) to strictly enforce data sovereignty and comply with rigid telecom regulatory constraints.</li>
-            <li>Directed the platform infrastructure strategy for a high-profile international process validation pilot, building the environment completely on Microsoft Azure public cloud to host Google Apigee and custom Jio Edge Gateway instances for staging-level operational testing.</li>
-            <li>Architected a highly secure hybrid cloud integration for the consumer-facing JioID Identity Solution on GCP, seamlessly bridging public cloud scale with our award-winning, on-premise Jio Edge Gateway infrastructure.</li>
-            <li>Designed a decoupled Control Plane and Data Plane verification framework using short-lived, cryptographically signed JSON Web Tokens (JWT) via public JWKS; allowed major OTT providers (Netflix, Disney+ Hotstar, YouTube) to validate subscriber entitlements instantly at their own CDN edges, completely shielding Jio’s internal systems from heavy streaming payloads.</li>
-            <li>Led implementation of multi-environment architecture ensuring redundancy and failover readiness.</li>
-            <li>Supported high throughput API traffic workloads supporting telecom scale demand.</li>
-        </ul>
-
-        <h3>Engineering Leadership & Delivery</h3>
-        <ul>
-            <li>Led and mentored engineering teams including DevOps engineers, API developers and platform engineers.</li>
-            <li>Fostered automation-first engineering culture aligned with DevOps and SRE principles.</li>
-            <li>Managed delivery priorities balancing platform stability with ongoing migration initiatives.</li>
-            <li>Partnered with Product, Security, Infrastructure and external partners to drive delivery outcomes.</li>
-            <li>Stepped into an engineering leadership vacuum following sudden senior departures, upskilling rapidly in software development mechanics to unify previously fractured Development and DevOps tracks into a single, high-performing team unit.</li>
-            <li>Hardened engineering governance guardrails to protect developers from corporate "ownership creep," establishing a strict Service Handover Protocol that transitioned direct partner communications and Pre-Prod/Prod deployment responsibilities to the Operations tier.</li>
-            <li>Defused an intense interpersonal reporting crisis across remote COVID-19 boundaries by acting as a stabilizing mediator between a brilliant, defensive senior engineer and skip-level management; provided a 3-year structured delegation coaching framework that transformed the engineer into a major team mentor.</li>
-            <li>Navigated the post-COVID "Great Resignation" talent wave by monitoring early resignation indicators, partnering with executive leaders to bypass standard appraisal cycles, and securing critical out-of-cycle salary corrections to retain 100% of the platform's core domain experts.</li>
-            <li>Established a high-yield grassroots talent framework, personally mentoring fresh, average-performing campus recruits over a 4-year runway into elite Top Performers. Direct reportees developed under this culture have successfully advanced into prestigious global tech giants including Mastercard, Zscaler, Akamai, and HighLevel.</li>
-        </ul>
-
-        <h2>Key Platform Initiatives</h2>
-        <p><strong>Internal API Platform Modernization:</strong> Led development of centralized API platform supporting integrations with banking partners, OTT platforms and enterprise systems. Improved platform security through OAuth, JWT and encryption enforcement.</p>
-        <p><strong>Distributed Platform Architecture:</strong> Built multi-site distributed architecture supporting high availability and geo redundancy. Established DR readiness processes including periodic recovery validation.</p>
-        <p><strong>Migration & Modernization Programs:</strong> Led migration from VM based infrastructure to containerized platform environments. Drove API modernization initiatives improving governance and lifecycle management.</p>
-
-        <h2>Previous Experience</h2>
-        <div class="job-header">
-            <span class="job-title">Cloud Technology & Support Engineer &mdash; IBM Watson Cloud, Bangalore</span>
-            <span class="job-date">Sep 2013 &ndash; Sep 2014</span>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Stepping up as second-in-command with the primary department head absent, take full command of the central Network Operations Center (NOC) floor under direct executive Apex review. Diagnose the underlying multi-system logjam, isolate network-level failures, and radically expand system throughput capabilities under active load constraints.</span>
         </div>
-        <ul>
-            <li>Maintained and optimized foundational Watson AI platform infrastructure, managing large-scale Linux, virtualization, and cloud networking environments.</li>
-        </ul>
-        
-        <div class="job-header">
-            <span class="job-title">Systems Engineer &mdash; Intel Corporation, Bangalore</span>
-            <span class="job-date">Sep 2010 &ndash; Sep 2013</span>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Command Consolidation:</strong> Maintained strict situational awareness and composure under intense operational pressure, establishing an immediate cross-functional war room comprising specialized DevOps and development engineers.</li>
+                <li><strong>Bottleneck Root-Cause Diagnostics:</strong> Bypassed standard backend server reboots to execute real-time connection telemetry analysis, isolating a critical connection-pooling starvation state where downstream database latencies were locking upstream API gateway threads.</li>
+                <li><strong>Infrastructure Mobilization & Build:</strong> Rapidly negotiated for and hot-provisioned bare-metal hardware assets under emergency protocols, bypassing standard multi-week deployment timelines.</li>
+                <li><strong>Parallel Cluster Deployment:</strong> Led a non-stop, multi-day engineering sprint to construct, configure, and seamlessly deploy 6 entirely new, dedicated API Gateway clusters alongside distributed caching layers to segment incoming traffic pools.</li>
+            </ul>
         </div>
-        <ul>
-            <li>Provided core Linux platform engineering support for critical corporate Business Intelligence environments and delivered structured technical training programs.</li>
-        </ul>
-
-        <div class="job-header">
-            <span class="job-title">Senior Technical Support Engineer / Systems Engineer &mdash; Novell Inc, Bangalore</span>
-            <span class="job-date">Apr 2006 &ndash; Aug 2010</span>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Successfully cleared the architectural bottleneck, completely stabilizing the retail layer to resume smooth onboarding for millions of active subscribers. Expanded the permanent API Gateway capacity by 600%, building the high-throughput infrastructure foundation that enabled the platform to achieve its historic first 100 million user acquisition goal in record time.</span>
         </div>
-        <ul>
-            <li>Supported enterprise infrastructure platforms and managed high-stakes global customer environments for mission-critical systems.</li>
-        </ul>
+    </div>
 
-        <div class="job-header">
-            <span class="job-title">Systems Engineer &mdash; AGS-Sundyne Technologies, Mumbai</span>
-            <span class="job-date">Sep 2003 &ndash; Apr 2006</span>
+    <!-- CASE 2 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 2: Multi-Site Datacenter Deployment & Global Traffic Engineering (Skoch Award Winner)</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">The Jio Edge Gateway required rapid geographic expansion from a centralized local datacenter to a highly resilient, geo-distributed multi-site architecture across India (including remote non-standard AG3 facilities in Bangalore and Noida). The rollout faced tight timeline metrics, severe InfoSec public-exposure compliance checks, and conflicting engineering demands from siloed cross-regional teams.</span>
         </div>
-        <ul>
-            <li>Delivered comprehensive technical presentations, designed complex proofs-of-concept (POCs), and spearheaded initial client production implementations.</li>
-        </ul>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Independently engineer, orchestrate, and complete the end-to-end multi-site edge gateway deployment within an aggressive 5-month deadline, achieving seamless unified-DNS global routing and tight regulatory perimeter isolation.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Cross-Functional Alignment:</strong> Served as the primary strategic liaison between disparate networking, infrastructure, security, and systems engineering teams, defusing conflicting engineering priorities through alignment frameworks.</li>
+                <li><strong>Global Traffic Engineering:</strong> Partnered with network core architects to design and deploy Global Server Load Balancing (GSLB) policies with intelligent location-based DNS routing, enabling geo-distributed request handling under a unified public entry point.</li>
+                <li><strong>InfoSec Hardening:</strong> Formulated complex firewall perimeter matrices and granular network segmentation controls, safely driving non-standard remote datacenters into full alignment with Tier-1 security standards for public API exposure.</li>
+                <li><strong>Physical Layer Blueprinting:</strong> Managed the hardware procurement lifecycle and directly verified datacenter rack deployments, blueprints, and layer-2 network matching to eliminate configuration drift.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Completed the resilient multi-site edge architecture deployment within the 5-month threshold, earning an executive promotion to Deputy General Manager (DGM). The platform infrastructure established the architectural framework that went on to win the prestigious national Skoch Award for excellence in technology engineering.</span>
+        </div>
+    </div>
 
-        <h2>Education & Certifications</h2>
-        <ul>
-            <li><strong>Bachelor of Electronics Engineering</strong> &ndash; Mumbai University</li>
-            <li><strong>Certifications:</strong> Google Cloud Platform Fundamentals | Google Apigee API Platform Fundamentals | ITIL Foundation (Former certification)</li>
-        </ul>
+    <!-- CASE 3 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 3: Enterprise API Portfolio Rationalization & Modernization to Cloud-Native Architecture</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">The enterprise application ecosystem was heavily burdened by a massive legacy footprint of 800 unmonitored, redundant, and loosely secured APIs. This sprawling footprint introduced severe security risks, soaring maintenance overheads, and blocked migration strategies toward a highly resilient hybrid infrastructure model.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Audit the full multi-department API ecosystem, securely eliminate technical debt without disrupting downstream traffic, and migrate core functionalities onto a hardened, modern Google Apigee and custom Node.js edge layer.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Data-Driven Discovery:</strong> Directed a comprehensive usage and dependency matrix analysis across all 800 legacy endpoints, systematically identifying and deprecating over 60% of underutilized or insecure API variants.</li>
+                <li><strong>Dual-Path Architectural Strategy:</strong> Engineered an intelligent path migration framework, routing 246 enterprise-grade APIs demanding heavy policy transformations and analytics to Google Apigee, while offloading 50 ultra-lightweight microservice APIs directly to an optimized internal Node.js gateway.</li>
+                <li><strong>Scale Hardening:</strong> Structured custom asynchronous flow-control policies inside the gateway tiers to safeguard core business logic routes during high-velocity traffic surges.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Successfully compressed the corporate API sprawl by 63%, consolidating the architecture down to 296 fully secured, high-performance production endpoints. Implemented zero-downtime cutovers that securely sustain over 100M+ requests per month and peak traffic loads of 7,000+ Transactions Per Second (TPS).</span>
+        </div>
+    </div>
 
-        <h2>Technical Skills Matrix</h2>
-        <ul>
-            <li><strong>Cloud:</strong> Azure, Google Cloud</li>
-            <li><strong>Containers & DevOps:</strong> Kubernetes, Docker, CI/CD, Azure DevOps</li>
-            <li><strong>Infrastructure:</strong> Linux, MySQL, Cassandra, Networking, Load Balancers, DNS</li>
-            <li><strong>Monitoring & Reliability:</strong> Prometheus, ELK, Observability, Incident Management</li>
-            <li><strong>Programming / Scripting:</strong> Node.js, Shell Scripting</li>
-        </ul>
+    <!-- CASE 4 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 4: Layer-7 Traffic Offloading & Gateway Shielding for Telemetry Logging Pipelines</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">The business-critical retail onboarding client application (RPOS), deployed across millions of endpoints nationwide, was instrumented to capture exhaustive user-interaction logs. This heavy stream of verbose telemetry data was routed straight through the main production API Gateway, causing intense resource exhaustion and threatening the latency metrics of high-value transactional payment paths.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Isolate the heavy logging traffic stream, insulate the core production API Gateway from resource degradation, and maintain comprehensive telemetry ingest continuity without altering client-side software code.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Layer-7 Traffic Segmentation:</strong> Evaluated incoming gateway payloads to isolate transactional signatures from structural telemetry logging paths (e.g., `/api/v1/logs/*`), establishing that logging endpoints did not require resource-heavy token transformation policies.</li>
+                <li><strong>Context-Switching Engineering:</strong> Programmed advanced path-based Layer-7 context-switching rules directly on the primary ingress Load Balancers to intercept and split traffic profiles.</li>
+                <li><strong>NGINX Edge Proxy Deployment:</strong> Provisioned and tuned a highly scalable, lightweight NGINX reverse-proxy tier explicitly optimized to ingest the high-frequency telemetry logging streams, completely bypassing the core Apigee infrastructure.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Diverted massive streams of non-transactional traffic away from the primary gateway, dropping core system utilization rates and restoring stable sub-millisecond latencies for core onboarding workflows. Maintained full logging visibility for backend analytical tools with zero modifications required on live client applications.</span>
+        </div>
+    </div>
 
-        <h2>Leadership Impact Summary</h2>
-        <p>• 21+ years engineering experience &nbsp;|&nbsp; • 10+ years platform leadership &nbsp;|&nbsp; • Led telecom scale platforms (450M+ users)<br>• Managed multi environment infrastructure platforms &nbsp;|&nbsp; • Delivered large scale migration programs &nbsp;|&nbsp; • Built high performing engineering teams</p>
+    <!-- CASE 5 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 5: Operationalizing Executive Vision for High-Traffic Edge Platforms (Node.js Edge Gateway)</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">With the strategic exposure of high-volume internal network APIs to the public internet, legacy core backend clusters began experiencing severe stability degradation under heavy consumer requests. Executive leadership issued a mandate to integrate a high-performance asynchronous Node.js tier to handle edge traffic, requiring complete operationalization across multi-zone infrastructure tracks.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Translate the high-level corporate concept into a bulletproof, production-ready enterprise software gateway architecture across all development, staging, and live production environments.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Architectural Design:</strong> Collaborated with core platform architects to structure an enterprise-grade ExpressJS framework wrapper, embedding customized rate-limiting, error handling, and security middlewares.</li>
+                <li><strong>Environment Parity Engineering:</strong> Authored and standardized environment-mapping blueprints across Dev, QA, Pre-Prod, and Production infrastructure, eliminating configuration drift and streamlining CI/CD delivery tracks.</li>
+                <li><strong>Asynchronous Scale Hardening:</strong> Tuned thread-pool allocations and reverse-proxy caching policies on the underlying Linux host containers, maximizing Node.js single-threaded event loop capacity to shield fragile legacy backends.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Successfully operationalized the Jio Node.js Edge Gateway, entirely shielding backend environments from direct internet vector exposure. Ensured stable platform onboarding for internet-facing systems, contributing directly to a platform runtime footprint that manages 100M+ API hits monthly.</span>
+        </div>
+    </div>
 
-        <p style="margin-top: 20px;"><strong>Notice Period:</strong> 90 Days</p>
+    <!-- CASE 6 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 6: Real-Time Payment Orchestration & Decoupled OTT Subscription Ecosystem Architectures</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">Managing digital user journeys across premium global OTT partnerships (Meta, Netflix, Amazon, Disney+ Hotstar) and high-volume Fintech aggregators (Paytm, BillDesk, Mobikwik, Euronet) demanded absolute transactional consistency. During heavy national traffic spikes, synchronous financial routes and heavy media stream handshakes risked overloading internal charging systems and causing massive revenue leaks.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Architect an elite integration layer capable of protecting internal billing backends from webhook retry storms during external banking outages, while enabling high-performance video validation without creating network choke points.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Idempotence & Queue Hardening:</strong> Engineered an advanced asynchronous decoupling architecture for inbound Fintech payment webhooks. Configured the gateway to instantly ingest payloads, run cryptographic signature checks, push items into high-velocity message queues with strict transactional idempotency rules, and return immediate HTTP `200 OK` statuses to block partner retry loops.</li>
+                <li><strong>Decoupled Control & Data Planes:</strong> Structured a secure, short-lived JSON Web Token (JWT) identity validation workflow for OTT partners. Implemented token signing via private keys at the gateway (Control Plane), allowing global OTT providers to mathematically verify subscription entitlements at their CDN edges via public JWKS endpoints, eliminating direct backend round-trips.</li>
+                <li><strong>Zero-Trust Network Verification:</strong> Built real-time header and network-level validation filters to verify incoming activation requests originated from authorized Jio subscriber links before processing promotional partner rollouts (e.g., Gemini 18-month, 5 TB promotion).</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Secured absolute financial integrity and zero-leakage billing telemetry handling across millions of daily recharges. Enabled massive media scaling by offloading heavy bandwidth requirements to external CDNs, maintaining high system availability during massive live media streaming windows and global AI subscription rollouts.</span>
+        </div>
+    </div>
 
+    <!-- SECTION 2 -->
+    <h2 style="page-break-before: always;">Part B: Organizational Governance, Team Turnarounds & Talent Development</h2>
+
+    <!-- CASE 7 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 7: Cross-Functional Strategic Deadlock Resolution (InfoSec Alignment)</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">A high-priority enterprise platform feature deployment hit a critical bottleneck due to a deep, multi-month technical compliance stalemate between the core infrastructure engineering team and the central Information Security (InfoSec) department. Both divisions were heavily entrenched in their opposing technical arguments, completely freezing project velocity.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Intervene in the long-standing technical impasse, bypass bottom-up bureaucracy, and unblock the stagnant project deployment timeline without compromising enterprise security baselines.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Communication Reframing:</strong> Identified that the technical conversation had reached a state of diminishing returns and shifted the problem framework from an open-ended engineering dispute to an objective business-risk calculation.</li>
+                <li><strong>Strategic Executive Mediation:</strong> Decisively halted the bottom-up debate loops and structured an immediate executive escalation path, stating: <em>"Since we both disagree on this technical implementation, let’s escalate and discuss it directly with senior leadership from InfoSec to make a calculated business-risk decision."</em></li>
+                <li><strong>High-Level Alignment:</strong> Moderated a focused executive alignment session with InfoSec senior decision-makers, reframing the impasse around corporate risk appetites and mitigations.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Completely resolved, agreed upon, and closed the multi-month cross-departmental deadlock within 5 minutes of the executive alignment call. Unblocked the frozen deployment pipeline instantly, demonstrating that high-level risk alignment is a powerful tool to overcome deep organizational inertia.</span>
+        </div>
+    </div>
+
+    <!-- CASE 8 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 8: Unified Dev-DevOps Integration & Team Turnaround Leadership</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">Between 2018 and 2020, the core API Development track was struck by severe leadership instability due to multiple unexpected health-related and personal exits of senior Dev Leads. Newly hired external replacements failed to onboard cleanly, leaving the development engineering unit highly fragmented, lacking clear direction, and introducing severe milestone delivery risks.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Step directly into the leadership vacuum, expand the personal mandate beyond existing DevOps infrastructure bounds, stabilize the fragmented development team, and merge both disciplines into a cohesive delivery unit.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Rapid Domain Upskilling:</strong> Accelerated personal mastery across application software development lifecycles and modern application code delivery mechanics, working closely with senior executive engineering pillars to bridge technical gaps.</li>
+                <li><strong>Silo Elimination:</strong> Removed the long-standing friction between development and infrastructure operations by restructuring daily delivery tracks into a unified, collaborative engineering framework.</li>
+                <li><strong>Empowerment Architecture:</strong> Promoted high-performing internal senior individual contributors to lead localized technical execution, while personal ownership was focused on long-term strategy, resource modeling, and blocking corporate noise.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Successfully stabilized the engineering track and completely halted developer attrition, leading to a major executive promotion to lead the unified organization. Re-established predictable, high-quality software sprint deliveries by constructing an optimized DevOps culture.</span>
+        </div>
+    </div>
+
+    <!-- CASE 9 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 9: Remote Crisis Mediation & Multi-Year Professional Delegation Coaching</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">During the high-stress remote-work phase of the COVID-19 pandemic, severe communication friction caused an intense professional misunderstanding and argument between an exceptionally talented senior engineer and the skip-level L1 department manager. Feeling alienated, the critical engineer requested an immediate structural transfer to escape the conflict, threatening domain knowledge loss. Furthermore, this brilliant individual suffered from an inability to delegate to junior staff, creating an operational bottleneck.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Defuse the urgent interpersonal crisis across remote boundaries, rebuild organizational trust, and systematically guide the engineer to overcome his chronic technical delegation challenges.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Tactical Empathy Intervention:</strong> Managed immediate escalation risks by conducting lengthy, focused 1-on-1 supportive calls with the engineer, validating his technical perspective while defusing emotional friction.</li>
+                <li><strong>Physical Alignment Orchestration:</strong> Maintained close alignment until hybrid in-office operations resumed, immediately arranging structured, face-to-face mediation meetings that allowed both the engineer and the L1 manager to align their viewpoints.</li>
+                <li><strong>Structured Delegation Coaching:</strong> Partnered closely with the line manager over a 2-to-3-year track to intentionally coach the engineer on architectural delegation. Designed specific delivery frameworks where he was required to pass core execution tasks to junior engineers, providing a safe environment to learn scaling through others.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Completely repaired the multi-tier reporting relationship and retained 100% of critical domain knowledge within the team. Transformed a defensive individual contributor into a scaling, highly productive mentor who now expands overall group output by actively upskilling the junior engineering tier.</span>
+        </div>
+    </div>
+
+    <!-- CASE 10 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 10: Engineering Governance & Hardening Operational Boundaries Against Ownership Creep</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">In an aggressive drive to provide elite service management to global digital integration partners, the line manager (L1) began bypassing standard operational support streams. This turned highly specialized L3 application developers into real-time operational messengers between corporate clients and the Production Operations unit. Lacking direct access or control over live production environments, developers faced massive operational liabilities and unfair exposure to corporate blame when data or deployment errors occurred.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Establish clear, enforceable corporate boundaries between L3 Application Engineering and Production Operations to protect developer bandwidth and restore proper software lifecycle boundaries.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Risk Analysis & Framing:</strong> Audited cross-team data streams and presented a clear case to the L1 manager detailing how bypassing standard operational streams compromised segregation-of-duty standards and increased deployment risks.</li>
+                <li><strong>Service Handover Protocol Design:</strong> Championed a standardized, time-bound Service Handover model, stating that while engineering owns deep incident root-cause analysis (L3), day-to-day deployment and partner triage must belong strictly to Operations.</li>
+                <li><strong>Boundary Hardening:</strong> Enforced structural guidelines that limited developer involvement in production environments to formal tickets, completely removing them from real-time operational communication hot-seats.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Successfully insulated the core development team from operational liability and shifting corporate politics, dropping team stress and redirecting focus back to core feature velocity. Earned deep team loyalty and trust by standing as a protective shield against systemic operational creep.</span>
+        </div>
+    </div>
+
+    <!-- CASE 11 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 11: Macro-Market Attrition Navigation (Out-of-Cycle Correction Intervention)</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">During the post-COVID market expansion, a hyper-inflated tech hiring wave swept the industry, leading to aggressive compensation bidding from external firms. Key engineers and domain experts began receiving massive external offers and systematically resigning ("dropping papers"), creating an immediate delivery risk across nation-scale gateway projects.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Bypass traditional annual review timelines, design an immediate emergency retention plan, and halt the attrition wave to protect business continuity.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Proactive Risk Tracking:</strong> Utilized high-trust open channels with direct reports to catch early warning indicators of market attrition before it triggered a wave of departures.</li>
+                <li><strong>Executive Business Justification:</strong> Partnered closely with the L1 manager to present an immediate corporate risk analysis to HR and executive leadership, showing that standard review windows would fail to protect core platform capability.</li>
+                <li><strong>Emergency Pay Correction:</strong> Successfully drove the approval for an extraordinary, out-of-cycle salary restructuring framework for the entire critical engineering team, cutting through traditional corporate red tape.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">Retained 100% of the core domain experts and senior engineers through the absolute peak of the modern tech talent crisis. Maintained seamless platform operations with zero downtime for major enterprise integrations, while significantly elevating long-term trust in leadership.</span>
+        </div>
+    </div>
+
+    <!-- CASE 12 -->
+    <div class="case-study">
+        <div class="case-title">CASE STUDY 12: Long-Term Campus Talent Acceleration & Performance Transformation</div>
+        <div class="star-section">
+            <span class="star-label">Situation:</span>
+            <span class="star-content">A fresh graduate joined the platform engineering team through campus recruitment. While displaying solid foundational technical capabilities, severe difficulties in corporate communication and workplace confidence limited his early impact, keeping his performance reviews at a strictly average level for his first two years.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Task:</span>
+            <span class="star-content">Take direct ownership of the junior engineer's development, design a structured long-term mentorship framework to address his communication barriers, and lift his performance profile to top-tier levels.</span>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Action:</span>
+            <ul class="action-list">
+                <li><strong>Psychological Safety Isolation:</strong> Isolated communication anxiety as the primary performance blocker and established a supportive, low-pressure feedback loop to gradually build his confidence in group settings.</li>
+                <li><strong>Incremental Exposure Plan:</strong> Implemented a multi-year growth plan, moving him from isolated technical execution to high-visibility cross-functional tasks. Coached him closely on structuring technical designs and presenting updates clearly to external stakeholders.</li>
+                <li><strong>Stretch-Goal Modeling:</strong> Set clear, incremental engineering challenges paired with reliable internal support, ensuring he felt championed rather than micromanaged as his responsibilities grew.</li>
+            </ul>
+        </div>
+        <div class="star-section">
+            <span class="star-label">Result:</span>
+            <span class="star-content">By his fourth year of mentorship, the engineer completely overcame his communication barriers, accelerated his delivery pace, and was officially recognized as a Top Performer within the company. This process turned a struggling campus hire into a core pillar of the edge engineering team. Many direct reportees mentored under similar frameworks have successfully transitioned into elite global firms like Mastercard, Zscaler, Akamai, and HighLevel.</span>
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2 style="page-break-before: always;">Part C: Executive References & Verified Industry Validation</h2>
+
+    <!-- REC 1 -->
+    <div class="recommendation-card">
+        <div class="rec-author">Lokinder Singh</div>
+        <div class="rec-title">Software Development Engineer @ Jio Platforms Ltd | IIT Indore ’23 Core Graduate</div>
+        <div class="rec-text">
+            "Rajkiran Sir is one of the most approachable and supportive managers I’ve had the opportunity to work with. He has an exceptional ability to manage people and create an environment where team members feel comfortable learning, growing, and contributing freely.
+            <br><br>
+            What I truly admire about him is his <strong>deep understanding of networking and DevOps domains</strong>. His technical knowledge is extensive, and I learned a great deal while working under his guidance. No matter how busy he was, he always took ad hoc questions very sportingly and ensured that concepts were explained clearly and patiently.
+            <br><br>
+            Beyond being a strong technical leader, he is also an <strong>excellent mentor who genuinely invests in the growth of his team members</strong>. He is always approachable for guidance and support, and that is a very commendable quality in a manager. I’m truly grateful for the opportunity to work with and report to him. It was an enriching experience, and I would be happy to work with him again in the future."
+        </div>
+    </div>
+
+    <!-- REC 2 -->
+    <div class="recommendation-card">
+        <div class="rec-author">Devang Parikh</div>
+        <div class="rec-title">APAC Leader @ Red Hat (Formerly Direct Manager at Novell Software)</div>
+        <div class="rec-text">
+            "Raj is a great engineer, he is full of high energy. His capabilities in catching up technology is superb and I was spellbound with it. He learned the technologies required at the support center so fast. 
+            <br><br>
+            He also has a <strong>great skill of taking care of customers and knows customer management very well from the inside out</strong>. He can take care of any customer in any situation. Raj also has a <strong>natural leader</strong> in himself. He is more like a friend and I wish him luck."
+        </div>
+    </div>
+
+    <!-- REC 3 -->
+    <div class="recommendation-card">
+        <div class="rec-author">Roopak Prajapat</div>
+        <div class="rec-title">VP of Engineering & AI (Agentic AI, MLOps, Data Platforms | Ex-Intel | Ex-AB InBev)</div>
+        <div class="rec-text">
+            "Rajkiran is an excellent team player. His temperament ensures a good team work environment. He is also a <strong>very good technocrat</strong>. He has <strong>solid expertise in Linux and client-server model</strong>. I'll any day work with him in a team. I highly recommend him."
+        </div>
     </div>
 
 </body>
